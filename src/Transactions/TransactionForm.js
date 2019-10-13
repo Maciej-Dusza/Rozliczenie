@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { addTransactionAction } from './actions';
+import { addTransactionAction } from '../actions';
 
 
-const TestBase = (props) => {
+const TransactionFormBase = (props) => {
     const [title, setTitle] = useState(0);
     const [bank, setBank] = useState(1);
 
@@ -40,4 +40,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export const Test = connect(mapStateToProps, mapDispatchToProps)(TestBase)
+export const TransactionForm = connect(mapStateToProps, mapDispatchToProps)(TransactionFormBase)
