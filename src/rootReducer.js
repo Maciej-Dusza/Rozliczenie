@@ -1,8 +1,9 @@
+import { TRANSACTION_HEADERS } from "./constans/TransactionHeaders";
 
-const initialState = { transactionsList: [{ title: 'title', bank: 'bank', }] };
+const initialState = { transactionsList: [{ ...TRANSACTION_HEADERS }] };
 
 const addTransactionToList = (transactionsList, newTransaction) => {
-    return [...transactionsList, { title: newTransaction.title, bank: newTransaction.bank }]
+    return ([...transactionsList, newTransaction])
 }
 
 export const rootReducer = (state = initialState, action) => {

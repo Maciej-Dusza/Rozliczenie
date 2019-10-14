@@ -4,6 +4,5 @@ export const addTransactionAction = (newTransaction) => {
     return {
         type: 'ADD_TRANSACTION',
         payload: newTransaction
-
     }
 }

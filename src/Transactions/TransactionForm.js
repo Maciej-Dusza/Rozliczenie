@@ -1,28 +1,28 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { addTransactionAction } from '../actions';
+import { TRANSACTION_HEADERS } from '../constans/TransactionHeaders';
 
 
 const TransactionFormBase = (props) => {
-    const [title, setTitle] = useState(0);
-    const [bank, setBank] = useState(1);
+    const [transaction, setTransaction] = useState(
+        { ...TRANSACTION_HEADERS }
+    );
+
 
     return (
         <div>
-            <input value={title} onChange={(event) => { setTitle(event.target.value) }} />
-            <input value={bank} onChange={(event) => { setBank(event.target.value) }} />
-            <button onClick={() => props.addTransaction({ title, bank })}>
+            {Object.keys(TRANSACTION_HEADERS).map((element) =>
+                <input
+                    key={element}
+                    value={transaction[element]}
+                    onChange={(event) => { setTransaction({ ...transaction, [element]: event.target.value }) }}
+                />
+            )}
+            <button onClick={() => props.addTransaction(transaction)}>
                 Add transaction
             </button>
-
-
-
-            {props.transactionsList.map((element, index) =>
-                <div style={{ display: "flex" }} key={index}>
-                    <div>{element.title}</div>
-                    <div>{element.bank}</div>
-                </div>
-            )}
+            {console.log(props.transactionsList)}
         </div>)
 };
 
